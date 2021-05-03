@@ -33,6 +33,7 @@ function Product({ product, onAddToCart }) {
 }
 Product.propTypes = {
   product: PropTypes.instanceOf(Object).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default Product;
