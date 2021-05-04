@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import { TextField, Grid } from '@material-ui/core';
@@ -26,9 +27,9 @@ function FormInput({ name, label }) {
   );
 }
 
-FormInput.prototype = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-};
+// FormInput.prototype = {
+//   name: PropTypes.string.isRequired,
+//   label: PropTypes.string.isRequired,
+// };
 
 export default FormInput;
