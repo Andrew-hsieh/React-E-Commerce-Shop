@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import { TextField, Grid } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 function FormInput({ name, label }) {
   const { control } = useFormContext();
@@ -24,5 +25,10 @@ function FormInput({ name, label }) {
     </Grid>
   );
 }
+
+FormInput.prototype = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 export default FormInput;
