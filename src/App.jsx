@@ -47,22 +47,29 @@ const App = () => {
     setCart(newCart);
   }
 
+  // const handleCaptureCheckout = (checkoutTokenId, newOrder) => {
+    
+  //     console.log('XXXXXXXXXXXXXX',checkoutTokenId, newOrder)
+      
+  // };
+
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
-
+      console.log('check incomingOrder:', incomingOrder)
       setOrder(incomingOrder);
+
       refreshCart();
+    } catch (error) {
+      setErrorMessage('incomingOrder',error.data.error.message);
     }
-    catch (error) {
-      setErrorMessage(error.data.error.message)
-    }
-  }
+  };
 
   useEffect(() => {
     fetchProducts();
     fetchCart();
   }, []);
+  
   return (
     <Router>
       <div>
@@ -83,7 +90,7 @@ const App = () => {
             <Checkout 
             cart={cart}
             order={order}
-            onCaptureCheckout={handleCaptureCheckout}
+            handleCaptureCheckout={handleCaptureCheckout}
             error={errorMessage}
              />
           </Route>

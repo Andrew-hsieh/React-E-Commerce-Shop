@@ -10,7 +10,7 @@ const Review = ({ checkoutToken }) => (
     <List disablePadding>
       {checkoutToken.live.line_items.map((product) => (
         <ListItem style={{ padding: '10px 0' }} key={product.name}>
-          <ListItemText primary={product.name} secondary={`Quanitity: ${product.quantity}`} />
+          <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
           <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>
         </ListItem>
       ))}
@@ -20,7 +20,6 @@ const Review = ({ checkoutToken }) => (
           { checkoutToken.live.subtotal.formatted_with_symbol }
         </Typography>
       </ListItem>
-
     </List>
   </>
 );
