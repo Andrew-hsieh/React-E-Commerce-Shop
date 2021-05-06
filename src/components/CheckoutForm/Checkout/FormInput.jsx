@@ -1,33 +1,7 @@
-/* eslint-disable */
 import React from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import { TextField, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
-
-// function FormInput({ name, label, required }) {
-//   const { control } = useFormContext();
-//   const isError = false;
-
-//   return (
-//     <Grid item xs={12} sm={6}>
-//       <Controller
-//         as={TextField}
-//         control={control}
-//         error={isError}
-//         required={required}
-//         name={name}
-//         fullWidth
-//         defaultValue=''
-//         render={() => (
-//           <TextField
-//           label={label}
-//           required
-//           />
-//         )}
-//       />
-//     </Grid>
-//   );
-// };
 
 function FormInput({ name, label, required }) {
   const { control } = useFormContext();
@@ -49,9 +23,9 @@ function FormInput({ name, label, required }) {
   );
 }
 
-// FormInput.prototype = {
-//   name: PropTypes.string.isRequired,
-//   label: PropTypes.string.isRequired,
-// };
+FormInput.prototype = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 export default FormInput;

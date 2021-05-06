@@ -2,28 +2,62 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
+  topSpace: {
+    [theme.breakpoints.up('xs')]: {
+      marginTop: '18%',
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '10%',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginTop: '8%',
+    },
+  },
+  itemContainer: {
+    backgroundColor: 'blue',
+  },
   title: {
-    marginTop: '5%',
+    marginTop: '20%',
   },
   emptyButton: {
-    minWidth: '150px',
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: '5px',
-    },
+    marginRight: '20px',
     [theme.breakpoints.up('xs')]: {
-      marginRight: '20px',
+      width: '120px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '150px',
     },
   },
   checkoutButton: {
-    minWidth: '150px',
+    [theme.breakpoints.up('xs')]: {
+      width: '120px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '150px',
+    },
   },
   link: {
     textDecoration: 'none',
   },
   cardDetails: {
+    [theme.breakpoints.up('xs')]: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+    },
     display: 'flex',
-    marginTop: '10%',
-    width: '100%',
-    justifyContent: 'space-between',
+    marginTop: '5%',
+    width: '95%',
+  },
+  btnContainer: {
+    display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'space-around',
+      padding: '10px',
+    },
   },
 }));

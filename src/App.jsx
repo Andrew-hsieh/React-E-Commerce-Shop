@@ -5,6 +5,7 @@ import commerce from './lib/commerce';
 import {
   Products, Navbar, Cart, Checkout,
 } from './components';
+import './styles/styles.css';
 
 const App = () => {
   const [products, setProducts] = useState([]);

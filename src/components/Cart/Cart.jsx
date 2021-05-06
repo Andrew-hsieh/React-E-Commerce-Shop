@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Container, Typography, Grid, Button,
+  Typography, Grid, Button,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useStyle from './style';
@@ -13,20 +13,30 @@ const Cart = ({
   const classes = useStyle();
 
   const EmptyCart = () => (
-    <Typography variant="subtitle1">
-      You have no items in your shopping cart,
-      <Link to="/">
-        start adding some!
-      </Link>
+    <>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+      >
 
-    </Typography>
+        <Typography variant="subtitle1">
+          You have no items in your shopping cart
+        </Typography>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Button variant="contained" color="primary">
+            Start adding some!
+          </Button>
+        </Link>
+      </Grid>
+    </>
   );
 
   const FilledCart = () => (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justify="center" style={{ alignItems: 'center', minHeight: '60vh' }}>
         {cart.line_items.map((item) => (
-          <Grid item xs={12} sm={4} key={item.id}>
+          <Grid item xs={12} sm={10} key={item.id} alignItems="center">
             <CartItem
               onUpdateCartQty={handleUpdateCartQty}
               onRemoveFromCart={handleRemoveFromCart}
@@ -40,24 +50,30 @@ const Cart = ({
           Subtotal:
           {cart.subtotal.formatted_with_symbol}
         </Typography>
-        <Button className={classes.emptyButton} onClick={handleEmpty} size="large" type="button" variant="contained" color="secondary">
-          Empty Cart
-        </Button>
-        <Button className={classes.checkoutButton} component={Link} to="./checkout" size="large" type="button" variant="contained" color="primary">
-          Checkout
-        </Button>
+        <div className={classes.btnContainer}>
+          <Button className={classes.emptyButton} onClick={handleEmpty} type="button" variant="outlined" color="secondary">
+            Empty Cart
+          </Button>
+          <Button className={classes.checkoutButton} component={Link} to="./checkout" size="medium" type="button" variant="contained" color="primary">
+            Checkout
+          </Button>
+        </div>
       </div>
     </>
   );
   if (!cart.line_items) return 'Loading...';
   return (
-    <Container>
-      <div className={classes.toolbar} />
-      <Typography className={classes.title} variant="h3" gutterBottom>
-        Your Shopping Cart
-      </Typography>
-      { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
-    </Container>
+    <>
+      <Grid
+        container
+        justify="center"
+      >
+        <Typography className={classes.topSpace} variant="h3" gutterBottom>
+          Shopping Cart
+        </Typography>
+        { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      </Grid>
+    </>
   );
 };
 
