@@ -7,7 +7,6 @@ import { AddShoppingCart } from '@material-ui/icons';
 import useStyles from './style';
 
 function Product({ product, onAddToCart }) {
-  console.log(product);
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -19,12 +18,16 @@ function Product({ product, onAddToCart }) {
               <div>
                 {product.name}
               </div>
-              <div style={{ fontSize: '14px', color: 'darkgray' }}>
+              <Typography
+                color="textSecondary"
+                variant="body2"
+              >
                 {product.categories[0] ? product.categories[0].name : null}
-              </div>
+              </Typography>
             </div>
             <Typography variant="h5" gutterBottom>
-              {(product.price.formatted_with_symbol).substring(0, 4)}
+              {/* {(product.price.formatted_with_symbol).substring(0, 4)} */}
+              {product.price.formatted_with_symbol}
             </Typography>
           </div>
           {/* <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" /> */}
