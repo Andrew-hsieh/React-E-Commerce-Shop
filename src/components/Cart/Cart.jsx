@@ -18,16 +18,21 @@ const Cart = ({
         container
         justify="center"
         alignItems="center"
+        style={{ minHeight: '50vh', maxWidth: '90vw' }}
       >
-
-        <Typography variant="subtitle1">
-          You have no items in your shopping cart
-        </Typography>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="primary">
-            Start adding some!
-          </Button>
-        </Link>
+        <div style={{ textAlign: 'center' }}>
+          <h2>
+            YOUR CART IS EMPTY
+          </h2>
+          <p>
+            Once you add something to your bag - it will appear here. Ready to get started?
+          </p>
+          <Link to="/" style={{ textDecoration: 'none', paddingTop: '2rem' }}>
+            <Button variant="contained" color="primary">
+              Start adding some!
+            </Button>
+          </Link>
+        </div>
       </Grid>
     </>
   );

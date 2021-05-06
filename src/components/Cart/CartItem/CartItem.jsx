@@ -7,7 +7,6 @@ import Close from '@material-ui/icons/Close';
 import useStyle from './style';
 
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
-  console.log(item);
   const classes = useStyle();
   return (
     <Card className={classes.root}>
