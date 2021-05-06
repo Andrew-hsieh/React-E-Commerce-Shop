@@ -41,7 +41,7 @@ const Cart = ({
     <>
       <Grid container spacing={3} justify="center" style={{ alignItems: 'center', minHeight: '60vh' }}>
         {cart.line_items.map((item) => (
-          <Grid item xs={12} sm={10} key={item.id} alignItems="center">
+          <Grid container item xs={12} sm={10} key={item.id} alignItems="center">
             <CartItem
               onUpdateCartQty={handleUpdateCartQty}
               onRemoveFromCart={handleRemoveFromCart}
