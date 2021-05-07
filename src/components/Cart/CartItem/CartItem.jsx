@@ -17,8 +17,17 @@ const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
       <Container className={classes.content}>
         <CardContent className={classes.cardContent}>
           <span>{item.name}</span>
-          <Typography variant="h5" color="secondary">{item.price.formatted_with_symbol}</Typography>
-          <Typography variant="body2">{item.price.formatted_with_symbol}</Typography>
+          <Typography
+            variant="h5"
+            color="secondary"
+          >
+            {item.price.formatted_with_symbol}
+          </Typography>
+          <Typography
+            variant="body2"
+          >
+            {`${item.selected_options[0].group_name}: ${item.selected_options[0].option_name}`}
+          </Typography>
         </CardContent>
         <CardActions className={classes.cartActions}>
           <Typography>Qty: </Typography>

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Button } from '@material-ui/core';
-import './style.css';
+import { Modal, Backdrop, Fade, Button, makeStyles } from '@material-ui/core';
+import Swal from 'sweetalert2';
 import Close from '@material-ui/icons/Close';
+import './style.css';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,10 +31,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransitionsModal({ open, handleClose, productData, onAddToCart }) {
-  const [sizeId, setSizeId] = React.useState({});
+  const [sizeId, setSizeId] = React.useState(null);
   const classes = useStyles();
-  console.log(productData);
-  
   const handleChange = (event, newId, variantId) => {
     ([...event.target.parentElement.children].forEach((el)=>el.classList.remove('selectedBtn')))
     event.target.classList.toggle('selectedBtn')
@@ -42,6 +40,10 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
   };
 
   const handleAddToCart = () => {
+    if(!sizeId) {
+      Swal.fire('Oops...', 'You forgot to choose the size for your new shoes', 'error');
+      return;
+    };
     onAddToCart(productData.id, 1, sizeId);
     handleClose();
   }
@@ -93,12 +95,11 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
             }
           </div>
           <Button 
-          className={classes.checkoutButton} 
-          // component={Link} to="./checkout" 
           size="medium" type="button" variant="contained" color="primary"
+          style={{marginTop: '8px'}}
           onClick={handleAddToCart}
           >
-            Checkout
+            Add to Cart
           </Button>
         </div>
         </Fade>
