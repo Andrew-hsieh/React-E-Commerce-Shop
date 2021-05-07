@@ -73,11 +73,12 @@ const Cart = ({
         container
         justify="center"
       >
-        <Typography className={classes.topSpace} variant="h3" gutterBottom>
-          Shopping Cart
+        <Typography className={classes.topSpace} variant="h4" gutterBottom>
+          SHOPPING CART
         </Typography>
         { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
       </Grid>
+      { console.log(cart)}
     </>
   );
 };

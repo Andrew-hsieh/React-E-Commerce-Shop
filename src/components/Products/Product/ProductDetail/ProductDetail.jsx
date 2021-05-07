@@ -1,8 +1,9 @@
 /* eslint-disable */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Grid } from '@material-ui/core';
+import { Modal, Backdrop, Fade, Button } from '@material-ui/core';
 import './style.css';
+import Close from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -16,23 +17,36 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     borderRadius: '0.5rem',
     textAlign: 'center',
+    position: 'relative',
     // padding: theme.spacing(2, 4, 3),
     width: '80vw',
     height: '80vh',
   },
+  close: {
+    position: 'absolute',
+    top: '5px',
+    right: '5px',
+    cursor:'pointer',
+  }
 }));
 
-export default function TransitionsModal({ open, handleClose, productData }) {
-  const [productId, setProductId] = React.useState(null);
+export default function TransitionsModal({ open, handleClose, productData, onAddToCart }) {
+  const [sizeId, setSizeId] = React.useState({});
   const classes = useStyles();
+  console.log(productData);
   
-  const handleChange = (event, newId) => {
+  const handleChange = (event, newId, variantId) => {
     ([...event.target.parentElement.children].forEach((el)=>el.classList.remove('selectedBtn')))
     event.target.classList.toggle('selectedBtn')
-    setProductId(newId);
+    setSizeId({[variantId]: newId});
   };
 
-  if(!productData) {handleClose(); return null};
+  const handleAddToCart = () => {
+    onAddToCart(productData.id, 1, sizeId);
+    handleClose();
+  }
+
+  if(!productData.media) {handleClose(); return null};
   return (
       <Modal
         aria-labelledby="transition-modal-title"
@@ -48,9 +62,14 @@ export default function TransitionsModal({ open, handleClose, productData }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+          <Close 
+          fontSize="small" 
+          type="button" 
+          className={classes.close} 
+          onClick={() =>handleClose()} />
             <h2 id="transition-modal-title">{productData.name}</h2>
             <p id="transition-modal-description"
-            style={{ padding:'0 5px'}}
+            style={{ padding:'0 10px'}}
             dangerouslySetInnerHTML={{__html: productData.description}} />
             <div>
             <img
@@ -66,13 +85,21 @@ export default function TransitionsModal({ open, handleClose, productData }) {
               className='btn'
               value={option.id}
               aria-label="variant_option"
-              onClick={(e)=>handleChange(e,option.id)}
+              onClick={(e)=>handleChange(e,option.id, productData.variant_groups[0].id)}
               >
               {option.name}
               </button>
             ))
             }
           </div>
+          <Button 
+          className={classes.checkoutButton} 
+          // component={Link} to="./checkout" 
+          size="medium" type="button" variant="contained" color="primary"
+          onClick={handleAddToCart}
+          >
+            Checkout
+          </Button>
         </div>
         </Fade>
       </Modal>

@@ -32,7 +32,7 @@ const Products = ({ productList, onAddToCart }) => {
           </Grid>
         ))}
       </Grid>
-      <TransitionsModal onAddToCart={onAddToCart} productData={productData} open={open} handleClose={handleClose} />
+      <TransitionsModal onAddToCart={onAddToCart} productData={productData} open={open} handleClose={handleClose} onAddToCart={onAddToCart} />
     </main>
   );
 };
