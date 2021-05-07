@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import TransitionsModal from './Product/ProductDetail';
+import TransitionsModal from './Product/ProductDetail/ProductDetail';
 
 // import PropTypes from 'prop-types';
 import Product from './Product/Product';

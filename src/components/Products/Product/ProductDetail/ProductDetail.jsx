@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, CardMedia } from '@material-ui/core';
+import { Modal, Backdrop, Fade, Grid } from '@material-ui/core';
+import './style.css';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -22,11 +23,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransitionsModal({ open, handleClose, productData }) {
+  const [productId, setProductId] = React.useState(null);
   const classes = useStyles();
-  if(!productData.media) {handleClose(); return null};
-  console.log('productData', productData.media);
+  
+  const handleChange = (event, newId) => {
+    ([...event.target.parentElement.children].forEach((el)=>el.classList.remove('selectedBtn')))
+    event.target.classList.toggle('selectedBtn')
+    setProductId(newId);
+  };
+
+  if(!productData) {handleClose(); return null};
   return (
-    <div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -42,19 +49,32 @@ export default function TransitionsModal({ open, handleClose, productData }) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">{productData.name}</h2>
-            <p id="transition-modal-description" dangerouslySetInnerHTML={{__html: productData.description}} />
+            <p id="transition-modal-description"
+            style={{ padding:'0 5px'}}
+            dangerouslySetInnerHTML={{__html: productData.description}} />
+            <div>
             <img
-              url={productData.media.source}
+              src={productData.media.source}
               alt={productData.name}
-              style={{width:'50px'}}
+              style={{maxHeight:'40vh', maxWidth:'40vw'}}
               />
-          {(productData.variant_groups[0].options).map((option)=>(
-            <button key={option.id} onClick={()=>{console.log(option.id)}}>{option.name}</button>
-          ))}
-          
+              </div>
+          <div className={"btnGroup"}>
+            { productData.variant_groups.length !== 0 &&(productData.variant_groups[0].options).map((option)=>(
+              <button  
+              key={option.id}
+              className='btn'
+              value={option.id}
+              aria-label="variant_option"
+              onClick={(e)=>handleChange(e,option.id)}
+              >
+              {option.name}
+              </button>
+            ))
+            }
+          </div>
         </div>
         </Fade>
       </Modal>
-    </div>
   );
 }
