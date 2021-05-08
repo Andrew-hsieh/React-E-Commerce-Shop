@@ -7,10 +7,19 @@ export default makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    position: 'relative',
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    opacity: 1,
+  },
+  shadowImage: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   cardContent: {
     display: 'flex',
@@ -19,5 +28,8 @@ export default makeStyles(() => ({
   cardActions: {
     display: 'flex',
     justifyContent: 'flex-end',
+  },
+  textContent: {
+    padding: '8px 10px',
   },
 }));

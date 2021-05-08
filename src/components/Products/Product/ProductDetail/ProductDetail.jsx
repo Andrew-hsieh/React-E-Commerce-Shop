@@ -87,11 +87,9 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
                   className='btn'
                   value={option.id}
                   aria-label="variant_option"
-                  onClick={(e)=>handleChange(e,option.id, productData.variant_groups[0].id)}
-                  >
+                  onClick={(e)=>handleChange(e,option.id, productData.variant_groups[0].id)}>
                   {option.name}
-                  </button>
-                ))
+                  </button>))
                 }
               </div>
               <Button 

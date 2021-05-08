@@ -1,24 +1,23 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardMedia, CardContent, CardActions, Typography, IconButton,
-} from '@material-ui/core';
-import { AddShoppingCart } from '@material-ui/icons';
+  Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import useStyles from './style';
 
-function Product({ product, onAddToCart }) {
-  // console.log('product', product);
+function Product({ product }) {
+  console.log('product', product);
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <div>
-        <CardMedia className={classes.media} image={product.media.source} title={product.name} />
-        <CardContent style={{ padding: '8px 10px 0 10px' }}>
+      <div style={{position: 'relative'}}>
+        <CardMedia className={classes.media} id='imageFade' image={product.media.source} title={product.name} data-src={product.assets.length>1?product.assets[1].url:null}  />
+        <CardContent className={classes.textContent}>
           <div className={classes.cardContent}>
             <div>
-              <div>
+              <Typography variant="subtitle1">
                 {product.name}
-              </div>
+              </Typography>
               <Typography
                 color="textSecondary"
                 variant="body2"
@@ -27,24 +26,21 @@ function Product({ product, onAddToCart }) {
               </Typography>
             </div>
             <Typography variant="h5" gutterBottom>
-              {/* {(product.price.formatted_with_symbol).substring(0, 4)} */}
               {product.price.formatted_with_symbol}
             </Typography>
           </div>
-          {/* <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" /> */}
         </CardContent>
       </div>
-      <CardActions disableSpacing className={classes.cardActions}>
+      {/* <CardActions disableSpacing className={classes.cardActions}>
         <IconButton area-label="Add to Card" onClick={() => onAddToCart(product.id, 1)}>
           <AddShoppingCart />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
 Product.propTypes = {
   product: PropTypes.instanceOf(Object).isRequired,
-  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default Product;

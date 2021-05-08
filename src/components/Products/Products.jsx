@@ -1,5 +1,4 @@
 /* eslint-disable */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import TransitionsModal from './Product/ProductDetail/ProductDetail';
@@ -27,12 +26,12 @@ const Products = ({ productList, onAddToCart }) => {
       <div className={classes.toolbar} />
       <Grid container justify="center" spacing={4}>
         {productList.map((product) => (
-          <Grid onClick={() => handleOpen(product)} item key={product.id} xs={12} sm={6} md={4} lg={3} style={{ cursor: 'pointer' }}>
-            <Product product={product} onAddToCart={onAddToCart} />
+          <Grid onClick={() => handleOpen(product)} item key={product.id} xs={12} sm={6} md={4} lg={3} style={{ cursor: 'pointer'}}>
+            <Product product={product} />
           </Grid>
         ))}
       </Grid>
-      <TransitionsModal onAddToCart={onAddToCart} productData={productData} open={open} handleClose={handleClose} onAddToCart={onAddToCart} />
+      <TransitionsModal onAddToCart={onAddToCart} productData={productData} open={open} handleClose={handleClose} />
     </main>
   );
 };
