@@ -3,6 +3,7 @@ import React from 'react';
 import { Modal, Backdrop, Fade, Button, makeStyles } from '@material-ui/core';
 import Swal from 'sweetalert2';
 import Close from '@material-ui/icons/Close';
+import ImageSlider from '../../../ImageSlider/ImageSlider';
 import './style.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,20 +19,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0.5rem',
     textAlign: 'center',
     position: 'relative',
-    // padding: theme.spacing(2, 4, 3),
     width: '80vw',
     height: '80vh',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-around',
   },
-  close: {
-    position: 'absolute',
-    top: '5px',
-    right: '5px',
-    cursor:'pointer',
-  }
 }));
 
 export default function TransitionsModal({ open, handleClose, productData, onAddToCart }) {
   const [sizeId, setSizeId] = React.useState(null);
+  console.log('productDetail',productData);
   const classes = useStyles();
   const handleChange = (event, newId, variantId) => {
     ([...event.target.parentElement.children].forEach((el)=>el.classList.remove('selectedBtn')))
@@ -39,6 +37,10 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
     setSizeId({[variantId]: newId});
   };
 
+  const handleLeave = () => {
+    setSizeId(null);
+    handleClose()
+  } 
   const handleAddToCart = () => {
     if(!sizeId) {
       Swal.fire('Oops...', 'You forgot to choose the size for your new shoes', 'error');
@@ -55,7 +57,7 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={handleLeave}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -64,43 +66,42 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
       >
         <Fade in={open}>
           <div className={classes.paper}>
-          <Close 
-          fontSize="small" 
-          type="button" 
-          className={classes.close} 
-          onClick={() =>handleClose()} />
-            <h2 id="transition-modal-title">{productData.name}</h2>
-            <p id="transition-modal-description"
-            style={{ padding:'0 10px'}}
-            dangerouslySetInnerHTML={{__html: productData.description}} />
-            <div>
-            <img
-              src={productData.media.source}
-              alt={productData.name}
-              style={{maxHeight:'40vh', maxWidth:'40vw'}}
-              />
+            <Close 
+            fontSize="small" 
+            type="button" 
+            className='close' 
+            onClick={() =>handleLeave()} />
+            <div className="textContainer">
+              <h2 id="transition-modal-title">{productData.name}</h2>
+              <p id="transition-modal-description">
+                {productData.price.formatted_with_symbol}</p>
+            </div>
+            <div className='imageContainer'>
+              <ImageSlider assets={productData.assets} />
+            </div>
+            <div className="btnContainer">
+              <div className="btnGroup">
+                { productData.variant_groups.length !== 0 &&(productData.variant_groups[0].options).map((option)=>(
+                  <button  
+                  key={option.id}
+                  className='btn'
+                  value={option.id}
+                  aria-label="variant_option"
+                  onClick={(e)=>handleChange(e,option.id, productData.variant_groups[0].id)}
+                  >
+                  {option.name}
+                  </button>
+                ))
+                }
               </div>
-          <div className={"btnGroup"}>
-            { productData.variant_groups.length !== 0 &&(productData.variant_groups[0].options).map((option)=>(
-              <button  
-              key={option.id}
-              className='btn'
-              value={option.id}
-              aria-label="variant_option"
-              onClick={(e)=>handleChange(e,option.id, productData.variant_groups[0].id)}
-              >
-              {option.name}
-              </button>
-            ))
-            }
-          </div>
-          <Button 
-          size="medium" type="button" variant="contained" color="primary"
-          style={{marginTop: '8px'}}
-          onClick={handleAddToCart}
-          >
-            Add to Cart
-          </Button>
+              <Button 
+                size="medium" type="button" variant="contained" color="primary"
+                style={{marginTop: '8px'}}
+                onClick={handleAddToCart}
+                >
+                  Add to Cart
+              </Button>
+            </div>
         </div>
         </Fade>
       </Modal>

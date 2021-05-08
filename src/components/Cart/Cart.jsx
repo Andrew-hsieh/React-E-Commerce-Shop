@@ -78,7 +78,6 @@ const Cart = ({
         </Typography>
         { !cart.line_items.length ? <EmptyCart /> : <FilledCart />}
       </Grid>
-      { console.log(cart)}
     </>
   );
 };

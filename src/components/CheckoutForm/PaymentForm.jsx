@@ -41,11 +41,8 @@ const PaymentForm = ({ checkoutToken, shippingData, backStep, handleCaptureCheck
             payment_method_id: paymentMethod.id,
           },
         },
-      };
-      console.log('from paymentForm checkoutToken.id:',checkoutToken.id,'PaymentForm - orderData: ', orderData);
-      
+      };      
       handleCaptureCheckout(checkoutToken.id, orderData);
-
       nextStep();
     }
   }
