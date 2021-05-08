@@ -13,6 +13,7 @@ export default makeStyles(() => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
     opacity: 1,
+    cursor: 'pointer',
   },
   shadowImage: {
     height: 0,

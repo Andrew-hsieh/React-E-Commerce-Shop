@@ -50,7 +50,7 @@ export default makeStyles((theme) => ({
       justifyContent: 'space-around',
     },
     display: 'flex',
-    marginTop: '5%',
+    margin: '5% 0 10%',
     width: '95%',
   },
   btnContainer: {

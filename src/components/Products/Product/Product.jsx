@@ -5,13 +5,12 @@ import {
   Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import useStyles from './style';
 
-function Product({ product }) {
-  console.log('product', product);
+function Product({ product, handleOpen }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <div style={{position: 'relative'}}>
-        <CardMedia className={classes.media} id='imageFade' image={product.media.source} title={product.name} data-src={product.assets.length>1?product.assets[1].url:null}  />
+        <CardMedia onClick={()=>handleOpen(product)} className={classes.media} id='imageFade' image={product.media.source} title={product.name} data-src={product.assets.length>1?product.assets[1].url:null}  />
         <CardContent className={classes.textContent}>
           <div className={classes.cardContent}>
             <div>

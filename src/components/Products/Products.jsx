@@ -26,8 +26,8 @@ const Products = ({ productList, onAddToCart }) => {
       <div className={classes.toolbar} />
       <Grid container justify="center" spacing={4}>
         {productList.map((product) => (
-          <Grid onClick={() => handleOpen(product)} item key={product.id} xs={12} sm={6} md={4} lg={3} style={{ cursor: 'pointer'}}>
-            <Product product={product} />
+          <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+            <Product handleOpen={handleOpen} product={product} />
           </Grid>
         ))}
       </Grid>

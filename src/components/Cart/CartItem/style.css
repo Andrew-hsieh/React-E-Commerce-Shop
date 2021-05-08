@@ -1,0 +1,6 @@
+#qty::before {
+  content: "QTY:";
+  color: black;
+  font-size: 12px;
+}
+/*# sourceMappingURL=style.css.map */
