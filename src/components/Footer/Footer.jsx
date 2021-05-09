@@ -9,9 +9,9 @@ import './style.css';
 const Footer = () => {
   const newOne = 12;
   return (
-    <Box>
+    <Box mt={5} mb={{'xs':2,'sm':12}}>
       <Container maxWidth="xl">
-        <Box mb={{'xs':1,'sm':2}} className='footer_logo'>
+        <Box mb={{'xs':1,'sm':5}} className='footer_logo'>
           <Link href='/' className='footer_logo_link'>
             {`ANDREW\'S SHOP`}
           </Link>
@@ -23,53 +23,63 @@ const Footer = () => {
            alignItems='flex-start'
            style={{marginBottom:'20px'}}
            >
-              <Grid item xs={4} sm={4} justify="center" spacing={0}>
+              <Grid item xs={6} sm={4}>
                 <ul>
                   <li>
-                      <Link href="/" color="inherit">PRIVACY POLICY</Link>
+                      <a href="/" color="inherit">PRIVACY POLICY</a>
                   </li>
                   <li>
-                      <Link href="/" color="inherit">TERMS & CONDITIONS</Link>
+                      <a href="/" color="inherit">TERMS & CONDITIONS</a>
                   </li>
                   <li>
-                      <Link href="/" color="inherit">ABOUT</Link>
+                      <a href="/" color="inherit">ABOUT</a>
                   </li>
                 </ul>
               </Grid>
-              <Grid item xs={4} sm={4} justify='center'>
+              <Grid item xs={false} sm={4}>
+                <Box>
                 <ul className='icon_group'>
                 <li>
-                <GitHubIcon />
+                <GitHubIcon className="footer_icon" />
+                <span className="footer_icon_bg" />
                 </li>
                 <li>
-                <LinkedInIcon />
+                <LinkedInIcon className="footer_icon" />
+                <span className="footer_icon_bg" />
                 </li>
                 <li>
-                <PhoneIphoneIcon />
+                  <PhoneIphoneIcon className="footer_icon" />
+                  <span className="footer_icon_bg" />
                 </li>
                 </ul>
+                </Box>
+                <Box className='footer_newsletter'>
+                  <h4 className='footer_newsletter_title'>WEEKLY NEWSLETTER</h4>
+                  <form className='form-newsletter'>
+                  <input type='email' name='email' placeholder='NAME@EMAIL.COM'></input>
+                  <button type='submit'>SUBSCRIBE</button>
+                  </form>
+                </Box>
               </Grid>
-              <Grid item xs={4} sm={4} alignItems='flex-start'>
+              <Grid item xs={6} sm={4}>
               <ul>
                   <li>
-                      <Link href="/" color="inherit">SHIPPING INFO</Link>
+                      <a href="/" color="inherit">SHIPPING INFO</a>
                   </li>
                   <li>
-                      <Link href="/" color="inherit">RETURNS / EXCHANGES</Link>
+                      <a href="/" color="inherit">RETURNS / EXCHANGES</a>
                   </li>
                   <li>
-                      <Link href="/" color="inherit">CONTACT</Link>
+                      <a href="/" color="inherit">CONTACT</a>
                   </li>
                   </ul>
               </Grid>
           </Grid>
-        <Toolbar>
           <Grid container justify='center'>
           <p>
           © {new Date().getFullYear()}
           </p>
           </Grid>
-        </Toolbar>
       </Container>
     </Box>
   );

@@ -1,25 +1,30 @@
 .footer_logo {
   position: relative;
   text-align: center;
+  cursor: pointer;
   &::before,
   &::after {
     content: "";
-    width: calc(33.333333% - 40px);
-    height: 1px;
+    width: calc(33.333333% - 100px);
+    height: 0.5px;
     background-color: black;
     position: absolute;
     top: 50%;
   }
   &::before {
-    left: 0;
+    left: 5%;
   }
   &::after {
-    right: 0;
+    right: 5%;
   }
 }
 .footer_logo_link {
   color: black !important;
-  font-size: 14px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  &:hover {
+    text-decoration: none !important;
+  }
 }
 ul {
   text-align: center;
@@ -34,12 +39,110 @@ li {
   display: flex;
   justify-content: space-around;
   & li {
-    // color: darkcyan;
+    transition: 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    // background-color: transparent;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: black;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    &:hover {
+      color: white;
+    }
+    &:hover::before {
+      transform: scale(1);
+    }
   }
 }
+
 p {
   font-size: 12px;
 }
 a {
   font-size: 12px;
+}
+//side link
+li > a {
+  position: relative;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #000000;
+  letter-spacing: 2px;
+  &::after {
+    content: "";
+    position: absolute;
+    transition: 0.3s;
+    width: 0;
+    bottom: 0;
+    right: 0;
+    height: 0.2px;
+    background-color: #000000;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+.footer_newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.footer_newsletter_title {
+  font-weight: 500;
+  padding-top: 3.3rem;
+  letter-spacing: 3px;
+  &::before {
+    content: "";
+    width: 1px;
+    height: 3rem;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    // transform-origin: top center;
+    left: 50%;
+  }
+}
+.form-newsletter {
+  border: 1px solid #000000;
+  text-align: center;
+  & input {
+    text-align: center;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    letter-spacing: 2px;
+    font-size: 0.625rem;
+    height: 40px;
+    width: 100%;
+    padding: 0;
+    transition: 0.3s;
+    &:focus-visible {
+      outline: none;
+      background-color: rgb(240, 239, 239);
+    }
+  }
+  & button {
+    height: 40px;
+    width: 100%;
+    letter-spacing: 2px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+  }
 }
