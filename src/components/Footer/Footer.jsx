@@ -9,7 +9,7 @@ import './style.css';
 const Footer = () => {
   const newOne = 12;
   return (
-    <Box mt={5} mb={{'xs':2,'sm':12}}>
+    <Box mt={5} mb={{'xs':2,'sm':8}}>
       <Container maxWidth="xl">
         <Box mb={{'xs':1,'sm':5}} className='footer_logo'>
           <Link href='/' className='footer_logo_link'>
@@ -23,8 +23,8 @@ const Footer = () => {
            alignItems='flex-start'
            style={{marginBottom:'20px'}}
            >
-              <Grid item xs={6} sm={4}>
-                <ul>
+              <Grid item xs={8} sm={4} className='right_link'>
+                <ul className='footer_side_link'>
                   <li>
                       <a href="/" color="inherit">PRIVACY POLICY</a>
                   </li>
@@ -36,7 +36,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </Grid>
-              <Grid item xs={false} sm={4}>
+              <Grid item xs={10} sm={4} className='info_container'>
                 <Box>
                 <ul className='icon_group'>
                 <li>
@@ -57,12 +57,12 @@ const Footer = () => {
                   <h4 className='footer_newsletter_title'>WEEKLY NEWSLETTER</h4>
                   <form className='form-newsletter'>
                   <input type='email' name='email' placeholder='NAME@EMAIL.COM'></input>
-                  <button type='submit'>SUBSCRIBE</button>
+                  <button type='submit' className='footer_btn_subscribe'>SUBSCRIBE</button>
                   </form>
                 </Box>
               </Grid>
-              <Grid item xs={6} sm={4}>
-              <ul>
+              <Grid item xs={8} sm={4}>
+              <ul className='footer_side_link'>
                   <li>
                       <a href="/" color="inherit">SHIPPING INFO</a>
                   </li>

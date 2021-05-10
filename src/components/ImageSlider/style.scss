@@ -1,5 +1,6 @@
 img {
   max-height: 40vh;
+  max-width: 80%;
   object-fit: cover;
 }
 // image carousel
@@ -7,7 +8,7 @@ img {
   color: #3545a0 !important;
 }
 .slick-list {
-  max-width: 200px;
+  max-width: 600px;
 }
 .slick-slider {
   display: flex;
@@ -15,4 +16,12 @@ img {
 }
 .slick-track {
   width: 1400px;
+}
+@media screen and (max-width: 600px) {
+  .slick-list {
+    max-width: 200px;
+  }
+  img {
+    max-width: 100%;
+  }
 }

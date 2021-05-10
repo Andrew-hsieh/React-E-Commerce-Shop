@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React from 'react';
-import { Modal, Backdrop, Fade, Button, makeStyles } from '@material-ui/core';
+import { Modal, Backdrop, Fade, Button, makeStyles, Box } from '@material-ui/core';
 import Swal from 'sweetalert2';
 import Close from '@material-ui/icons/Close';
 import ImageSlider from '../../../ImageSlider/ImageSlider';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -29,8 +30,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionsModal({ open, handleClose, productData, onAddToCart }) {
   const [sizeId, setSizeId] = React.useState(null);
-  console.log('productDetail',productData);
   const classes = useStyles();
+
+  // toggle selected button class name for change color
   const handleChange = (event, newId, variantId) => {
     ([...event.target.parentElement.children].forEach((el)=>el.classList.remove('selectedBtn')))
     event.target.classList.toggle('selectedBtn')
@@ -47,6 +49,7 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
       return;
     };
     onAddToCart(productData.id, 1, sizeId);
+    setSizeId(null);
     handleClose();
   }
 
@@ -79,8 +82,8 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
             <div className='imageContainer'>
               <ImageSlider assets={productData.assets} />
             </div>
-            <div className="btnContainer">
-              <div className="btnGroup">
+            <Box mb={{'xs':2,'md':4}} className="btnContainer">
+              <Box className="btnGroup">
                 { productData.variant_groups.length !== 0 &&(productData.variant_groups[0].options).map((option)=>(
                   <button  
                   key={option.id}
@@ -91,7 +94,7 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
                   {option.name}
                   </button>))
                 }
-              </div>
+              </Box>
               <Button 
                 size="medium" type="button" variant="contained" color="primary"
                 style={{marginTop: '8px'}}
@@ -99,7 +102,7 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
                 >
                   Add to Cart
               </Button>
-            </div>
+            </Box>
         </div>
         </Fade>
       </Modal>

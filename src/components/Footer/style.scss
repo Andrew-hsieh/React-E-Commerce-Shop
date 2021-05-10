@@ -5,82 +5,28 @@
   &::before,
   &::after {
     content: "";
-    width: calc(33.333333% - 100px);
+    width: calc(33.333333% - 80px);
     height: 0.5px;
     background-color: black;
     position: absolute;
     top: 50%;
   }
   &::before {
-    left: 5%;
+    left: 0%;
   }
   &::after {
-    right: 5%;
+    right: 0%;
   }
 }
 .footer_logo_link {
   color: black !important;
-  font-size: 20px;
+  font-size: 22px;
   letter-spacing: 3px;
+  position: relative;
+  padding-bottom: 4px;
   &:hover {
     text-decoration: none !important;
   }
-}
-ul {
-  text-align: center;
-  list-style: none;
-  margin-top: 0;
-  padding: 0;
-}
-li {
-  margin-bottom: 10px;
-}
-.icon_group {
-  display: flex;
-  justify-content: space-around;
-  & li {
-    transition: 0.3s;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    // background-color: transparent;
-    &::before {
-      content: "";
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-color: black;
-      border-radius: 50%;
-      transform: scale(0);
-      transition: 0.5s;
-      z-index: -1;
-    }
-    &:hover {
-      color: white;
-    }
-    &:hover::before {
-      transform: scale(1);
-    }
-  }
-}
-
-p {
-  font-size: 12px;
-}
-a {
-  font-size: 12px;
-}
-//side link
-li > a {
-  position: relative;
-  transition: 0.3s;
-  text-decoration: none;
-  color: #000000;
-  letter-spacing: 2px;
   &::after {
     content: "";
     position: absolute;
@@ -98,6 +44,83 @@ li > a {
     }
   }
 }
+.icon_group {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  & li {
+    transition: 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      background-color: black;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    &:hover {
+      color: white;
+    }
+    &:hover::before {
+      transform: scale(1);
+    }
+    & svg {
+      font-size: 28px;
+    }
+  }
+}
+
+p {
+  font-size: 12px;
+}
+a {
+  font-size: 12px;
+}
+//side link
+.footer_side_link {
+  text-align: center;
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+  & li {
+    margin-bottom: 10px;
+    & a {
+      position: relative;
+      transition: 0.3s;
+      text-decoration: none;
+      color: #000000;
+      letter-spacing: 2px;
+      padding-bottom: 3px;
+      &::after {
+        content: "";
+        position: absolute;
+        transition: 0.3s;
+        width: 0;
+        bottom: 0;
+        right: 0;
+        height: 0.2px;
+        background-color: #000000;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
 .footer_newsletter {
   display: flex;
   flex-direction: column;
@@ -105,8 +128,8 @@ li > a {
   position: relative;
 }
 .footer_newsletter_title {
-  font-weight: 500;
   padding-top: 3.3rem;
+  padding-bottom: 1rem;
   letter-spacing: 3px;
   &::before {
     content: "";
@@ -120,18 +143,19 @@ li > a {
   }
 }
 .form-newsletter {
-  border: 1px solid #000000;
+  width: 100%;
   text-align: center;
   & input {
     text-align: center;
-    border: 0;
-    border-bottom: 1px solid #000000;
     letter-spacing: 2px;
     font-size: 0.625rem;
     height: 40px;
     width: 100%;
+    max-width: 100%;
     padding: 0;
     transition: 0.3s;
+    border: 1px solid black;
+    box-sizing: border-box;
     &:focus-visible {
       outline: none;
       background-color: rgb(240, 239, 239);
@@ -141,8 +165,42 @@ li > a {
     height: 40px;
     width: 100%;
     letter-spacing: 2px;
-    background-color: white;
-    border: 0;
+    border: 1px solid black;
+    border-top: 0;
     cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+    z-index: 2;
+    &::before {
+      content: "";
+      position: absolute;
+      width: calc(100% + 2px);
+      height: 100%;
+      background-color: #000000;
+      width: 0;
+      bottom: 0;
+      right: 0;
+      transform-origin: right center;
+      opacity: 1;
+      box-sizing: border-box;
+      z-index: -1;
+      transition: 0.3s;
+    }
+    &:hover {
+      color: white;
+      &::before {
+        width: calc(100% + 2px);
+        left: -1px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .right_link {
+    order: 1;
+  }
+  .info_container {
+    margin-bottom: 30px !important;
   }
 }

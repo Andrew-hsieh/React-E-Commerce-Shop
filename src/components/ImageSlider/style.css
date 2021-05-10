@@ -1,5 +1,6 @@
 img {
   max-height: 40vh;
+  max-width: 80%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -9,7 +10,7 @@ img {
 }
 
 .slick-list {
-  max-width: 200px;
+  max-width: 600px;
 }
 
 .slick-slider {
@@ -23,5 +24,14 @@ img {
 
 .slick-track {
   width: 1400px;
+}
+
+@media screen and (max-width: 600px) {
+  .slick-list {
+    max-width: 200px;
+  }
+  img {
+    max-width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

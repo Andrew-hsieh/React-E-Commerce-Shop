@@ -72,6 +72,7 @@ const Cart = ({
       <Grid
         container
         justify="center"
+        style={{ backgroundColor: '#fafafa' }}
       >
         <Typography className={classes.topSpace} variant="h4" gutterBottom>
           SHOPPING CART

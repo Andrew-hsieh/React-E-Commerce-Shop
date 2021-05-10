@@ -22,14 +22,17 @@
   margin-bottom: 18px;
 }
 .btnGroup {
-  padding: 5px 0;
+  padding: 5px;
+  max-width: 330px;
+  margin: 0 auto;
 }
 .btn {
   color: black;
   border: 0.3px solid #808080;
-  min-width: 55px;
-  padding: 3px 1px;
-  margin: 3px 2px;
+  min-width: 60px;
+  height: 35px;
+  padding: 3px;
+  margin: 3px;
   background-color: transparent;
   transition: 0.5s ease;
   border-radius: 3px;
@@ -57,4 +60,11 @@
 .swal2-popup {
   height: 80vh;
   width: 80vw;
+}
+
+@media screen and (max-width: 350px) {
+  .btn {
+    min-width: 55px;
+    height: 30px;
+  }
 }
