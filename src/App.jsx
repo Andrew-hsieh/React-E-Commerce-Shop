@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import commerce from './lib/commerce';
 import {
-  Products, Navbar, Cart, Checkout, Footer
+  Products, Navbar, Cart, Checkout, Footer, Home
 } from './components';
 import './styles/styles.css';
 
@@ -48,12 +48,6 @@ const App = () => {
     setCart(newCart);
   }
 
-  // const handleCaptureCheckout = (checkoutTokenId, newOrder) => {
-    
-  //     console.log('XXXXXXXXXXXXXX',checkoutTokenId, newOrder)
-      
-  // };
-
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
@@ -77,6 +71,9 @@ const App = () => {
         <Navbar totalItems={cart.total_items} />
         <Switch>
           <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/products">
             <Products productList={products} onAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/cart">

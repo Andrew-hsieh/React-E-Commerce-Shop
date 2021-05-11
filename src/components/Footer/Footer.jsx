@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { Container, Toolbar, Box, Typography, Grid, Link } from '@material-ui/core';
+import { Container, Box, Typography, Grid, Link } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';

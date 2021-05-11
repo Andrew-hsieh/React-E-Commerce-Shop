@@ -4,6 +4,7 @@ import {
   Typography, Grid, Button,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import useStyle from './style';
 import CartItem from './CartItem/CartItem';
 
@@ -18,17 +19,18 @@ const Cart = ({
         container
         justify="center"
         alignItems="center"
-        style={{ minHeight: '50vh', maxWidth: '90vw' }}
+        style={{ minHeight: '80vh', maxWidth: '90vw' }}
       >
         <div style={{ textAlign: 'center' }}>
+          <AddShoppingCartIcon style={{ fontSize: '10rem' }} />
           <h2>
             YOUR CART IS EMPTY
           </h2>
-          <p>
+          <h6>
             Once you add something to your bag - it will appear here. Ready to get started?
-          </p>
-          <Link to="/" style={{ textDecoration: 'none', paddingTop: '2rem' }}>
-            <Button variant="contained" color="primary">
+          </h6>
+          <Link to="/products" style={{ textDecoration: 'none', paddingTop: '2rem' }}>
+            <Button size="large" variant="contained" color="primary">
               Start adding some!
             </Button>
           </Link>

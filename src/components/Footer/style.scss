@@ -1,3 +1,6 @@
+.section2 {
+  margin-bottom: 5rem;
+}
 .footer_logo {
   position: relative;
   text-align: center;
@@ -175,12 +178,11 @@ a {
       content: "";
       position: absolute;
       width: calc(100% + 2px);
-      height: 100%;
+      height: calc(100% + 1px);
       background-color: #000000;
       width: 0;
-      bottom: 0;
-      right: 0;
-      transform-origin: right center;
+      bottom: -1px;
+      right: -1px;
       opacity: 1;
       box-sizing: border-box;
       z-index: -1;
