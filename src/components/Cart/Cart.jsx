@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { TimelineLite, Power3 } from 'gsap';
+import { gsap, Power3 } from 'gsap';
 import {
   Typography, Grid, Button,
 } from '@material-ui/core';
@@ -42,10 +42,9 @@ const Cart = ({
 
   const FilledCart = () => {
     // animation
-    const tl = new TimelineLite();
     useEffect(() => {
       cart.line_items.map((_, index) => (
-        tl.from(`.product${index}`, { y: -100, opacity: 0, duration: 0.8, delay: (0.2 * index), ease: Power3.easeOut }, 'Start')
+        gsap.timeline().from(`.product${index}`, { y: -30, opacity: 0, duration: 0.8, delay: (0.2 * index), ease: Power3.easeOut }, 'Start')
       ));
     }, []);
     return (

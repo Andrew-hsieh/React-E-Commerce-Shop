@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
-import { TimelineLite, Power3} from 'gsap';
+import { gsap, Power3} from 'gsap';
 import { Box,Grid, CssBaseline } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './style.css'
@@ -9,10 +9,9 @@ import jordan2 from '../../assets/products/jordan-m.png';
 import jordanLogo from '../../assets/products/jordanLogo.png';
 
 const Home = () => {
-  let tl = new TimelineLite();
 
   useEffect(() => {
-    tl.from('.logo_container',{y:-30,opacity:0, duration:1, ease:Power3.easeOut},'Start')
+    gsap.timeline().from('.logo_container',{y:-30,opacity:0, duration:1, ease:Power3.easeOut},'Start')
     .from('.textContent_title',{x:30,opacity:0, duration:1, ease:Power3.easeOut, delay:0.3},'Start')
     .from('p',{x:30,opacity:0, duration:1, ease:Power3.easeOut, delay:0.5},'Start')
     .from('.go_button',{x:30, opacity:0,duration:1, ease:Power3.easeOut, delay:0.7},'Start')

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import TransitionsModal from './Product/ProductDetail/ProductDetail';
-import { TimelineLite, Power3} from 'gsap';
+import { gsap, Power3} from 'gsap';
 // import PropTypes from 'prop-types';
 import Product from './Product/Product';
 import useStyles from './style';
@@ -20,12 +20,10 @@ const Products = ({ productList, onAddToCart }) => {
     setOpen(false);
   };
 
-  let tl = new TimelineLite();
-
   useEffect(() => {
     productList.map((_,index)=>{
       return (
-        tl.from(`.product${index}`,{y:-100,opacity:0, duration:0.8,delay:(0.2 * index), ease:Power3.easeOut},'Start')
+        gsap.timeline().from(`.product${index}`,{y:-100,opacity:0, duration:0.8,delay:(0.2 * index), ease:Power3.easeOut},'Start')
       )})
   }, []);
  

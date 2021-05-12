@@ -30,22 +30,6 @@
   &:hover {
     text-decoration: none !important;
   }
-  &::after {
-    content: "";
-    position: absolute;
-    transition: 0.3s;
-    width: 0;
-    bottom: 0;
-    right: 0;
-    height: 0.2px;
-    background-color: #000000;
-  }
-  &:hover {
-    &::after {
-      width: 100%;
-      left: 0;
-    }
-  }
 }
 .icon_group {
   display: flex;
@@ -114,7 +98,7 @@ a {
         width: 0;
         bottom: 0;
         right: 0;
-        height: 0.2px;
+        height: 0.5px;
         background-color: #000000;
       }
       &:hover {

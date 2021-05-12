@@ -13,7 +13,7 @@ const Footer = () => {
       <Container maxWidth="xl">
         <Box mb={{'xs':1,'sm':5}} className='footer_logo'>
           <Link href='/' className='footer_logo_link'>
-            {`ANDREW\'S SHOP`}
+            {`Andrew\'s Shop`}
           </Link>
         </Box>
           <Grid 

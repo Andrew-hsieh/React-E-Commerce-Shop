@@ -2,10 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import commerce from './lib/commerce';
+import { gsap } from 'gsap';
+import { CSSPlugin } from 'gsap/CSSPlugin';
 import {
   Products, Navbar, Cart, Checkout, Footer, Home
 } from './components';
 import './styles/styles.css';
+
+gsap.registerPlugin(CSSPlugin)
 
 const App = () => {
   const [products, setProducts] = useState([]);
