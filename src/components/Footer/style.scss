@@ -51,6 +51,9 @@
   display: flex;
   justify-content: space-around;
   padding: 0;
+  & svg {
+    color: black;
+  }
   & li {
     transition: 0.3s;
     width: 40px;
@@ -71,7 +74,7 @@
       transition: 0.5s;
       z-index: -1;
     }
-    &:hover {
+    &:hover svg {
       color: white;
     }
     &:hover::before {

@@ -10,4 +10,45 @@
   display: flex;
   text-decoration: none;
 }
+
+.store_title {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 90px;
+  padding: 15px 0 15px 5px;
+}
+
+.store_title a {
+  text-decoration: none;
+}
+
+.store_title:hover .store_links {
+  display: block;
+}
+
+.store_links {
+  display: none;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.store_links a {
+  width: 100%;
+  text-align: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+  background-color: #f1f1f1;
+}
+
+.store_links a:hover {
+  background-color: steelblue;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

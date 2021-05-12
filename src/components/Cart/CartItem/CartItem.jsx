@@ -10,14 +10,14 @@ import './style.css';
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
   const classes = useStyle();
   return (
-    <Card className={classes.root}>
-      <Close fontSize="small" type="button" className={classes.btn} color="secondary" onClick={() => { onRemoveFromCart(item.id); }} />
+    <Card className="root">
+      <Close fontSize="small" type="button" className="btnClose" color="secondary" onClick={() => { onRemoveFromCart(item.id); }} />
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ maxWidth: '50%', display: 'flex', alignItems: 'center' }}>
           <CardMedia image={item.media.source} alt={item.name} className={classes.media} />
         </div>
-        <Container className={classes.content}>
-          <CardContent className={classes.cardContent}>
+        <Container className="content">
+          <CardContent className="cardContent">
             <span>{item.name}</span>
             <Typography
               variant="h5"
@@ -33,9 +33,13 @@ const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
           </CardContent>
         </Container>
       </div>
-      <CardActions className={classes.cartActions}>
-        {/* <Typography>Qty: </Typography> */}
-        <div className={classes.buttons} id="qty">
+      <CardActions className="cartActions">
+        <div className="buttons">
+          <Typography
+            variant="overline"
+          >
+            QTY:
+          </Typography>
           <Button
             type="button"
             size="small"

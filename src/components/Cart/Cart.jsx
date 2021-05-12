@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { TimelineLite, Power3 } from 'gsap';
 import {
   Typography, Grid, Button,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import useStyle from './style';
 import CartItem from './CartItem/CartItem';
+import useStyle from './style';
 
 const Cart = ({
   cart, handleEmpty, handleUpdateCartQty, handleRemoveFromCart,
@@ -39,35 +40,44 @@ const Cart = ({
     </>
   );
 
-  const FilledCart = () => (
-    <>
-      <Grid container spacing={3} justify="center" style={{ alignItems: 'center', minHeight: '60vh' }}>
-        {cart.line_items.map((item) => (
-          <Grid container item xs={12} sm={10} key={item.id} alignItems="center">
-            <CartItem
-              onUpdateCartQty={handleUpdateCartQty}
-              onRemoveFromCart={handleRemoveFromCart}
-              item={item}
-            />
-          </Grid>
-        ))}
-      </Grid>
-      <div className={classes.cardDetails}>
-        <Typography variant="h4">
-          Subtotal:
-          {cart.subtotal.formatted_with_symbol}
-        </Typography>
-        <div className={classes.btnContainer}>
-          <Button className={classes.emptyButton} onClick={handleEmpty} type="button" variant="outlined" color="secondary">
-            Empty Cart
-          </Button>
-          <Button className={classes.checkoutButton} component={Link} to="./checkout" size="medium" type="button" variant="contained" color="primary">
-            Checkout
-          </Button>
+  const FilledCart = () => {
+    // animation
+    const tl = new TimelineLite();
+    useEffect(() => {
+      cart.line_items.map((_, index) => (
+        tl.from(`.product${index}`, { y: -100, opacity: 0, duration: 0.8, delay: (0.2 * index), ease: Power3.easeOut }, 'Start')
+      ));
+    }, []);
+    return (
+      <>
+        <Grid container spacing={3} justify="center" style={{ alignItems: 'center', minHeight: '60vh' }}>
+          {cart.line_items.map((item, index) => (
+            <Grid container item xs={12} sm={10} key={item.id} alignItems="center" className={`product${index}`}>
+              <CartItem
+                onUpdateCartQty={handleUpdateCartQty}
+                onRemoveFromCart={handleRemoveFromCart}
+                item={item}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        <div className={classes.cardDetails}>
+          <Typography variant="h4">
+            Subtotal:
+            {cart.subtotal.formatted_with_symbol}
+          </Typography>
+          <div className={classes.btnContainer}>
+            <Button className={classes.emptyButton} onClick={handleEmpty} type="button" variant="outlined" color="secondary">
+              Empty Cart
+            </Button>
+            <Button className={classes.checkoutButton} component={Link} to="./checkout" size="medium" type="button" variant="contained" color="primary">
+              Checkout
+            </Button>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  };
   if (!cart.line_items) return 'Loading...';
   return (
     <>

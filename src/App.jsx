@@ -53,7 +53,6 @@ const App = () => {
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
       console.log('check incomingOrder:', incomingOrder)
       setOrder(incomingOrder);
-
       refreshCart();
     } catch (error) {
       setErrorMessage('incomingOrder',error.data.error.message);

@@ -1,5 +1,31 @@
-#qty::before {
-  content: "QTY:";
-  color: black;
-  font-size: 12px;
+.root {
+  width: 100%;
+  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.cartActions {
+  justify-content: center;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.btnClose {
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }

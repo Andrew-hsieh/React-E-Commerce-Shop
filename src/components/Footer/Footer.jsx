@@ -40,16 +40,22 @@ const Footer = () => {
                 <Box>
                 <ul className='icon_group'>
                 <li>
+                <a href="https://github.com/Andrew-hsieh/React-E-Commerce-Shop">
                 <GitHubIcon className="footer_icon" />
                 <span className="footer_icon_bg" />
+                </a>
                 </li>
                 <li>
+                <a href="https://www.linkedin.com/in/andrew-hsieh-22a802205/">
                 <LinkedInIcon className="footer_icon" />
                 <span className="footer_icon_bg" />
+                </a>
                 </li>
                 <li>
+                <a href="tel:+61478326588"><i className="fas fa-mobile-alt" aria-label="phone-number" />
                   <PhoneIphoneIcon className="footer_icon" />
                   <span className="footer_icon_bg" />
+                  </a>
                 </li>
                 </ul>
                 </Box>

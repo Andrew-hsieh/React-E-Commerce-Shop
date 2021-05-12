@@ -63,6 +63,10 @@
   padding: 0;
 }
 
+.icon_group svg {
+  color: black;
+}
+
 .icon_group li {
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -95,7 +99,7 @@
   z-index: -1;
 }
 
-.icon_group li:hover {
+.icon_group li:hover svg {
   color: white;
 }
 
