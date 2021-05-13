@@ -17,9 +17,13 @@
     height: auto;
     max-width: 100%;
     max-height: 100%;
+    transition: 0.8s ease;
   }
   &:hover .secondImage {
     opacity: 1;
+  }
+  &:hover .firstImage {
+    opacity: 0;
   }
 }
 .mainImg_container {

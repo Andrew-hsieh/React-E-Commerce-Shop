@@ -24,7 +24,7 @@ const Home = () => {
       <Grid className='productTheme' item xs={12} sm={8}>
         <Box className='mainImg'>
           <div className='mainImg_container'>
-          <img src={jordan} alt='jordan'/>
+          <img className='firstImage' src={jordan} alt='jordan'/>
           <img className='secondImage' src={jordan2} alt='jordan'/>
           </div>
           <Box className='logo_container'>

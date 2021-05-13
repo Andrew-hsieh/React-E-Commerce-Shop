@@ -31,10 +31,16 @@
   height: auto;
   max-width: 100%;
   max-height: 100%;
+  -webkit-transition: 0.8s ease;
+  transition: 0.8s ease;
 }
 
 .mainImg:hover .secondImage {
   opacity: 1;
+}
+
+.mainImg:hover .firstImage {
+  opacity: 0;
 }
 
 .mainImg_container {
