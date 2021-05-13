@@ -31,7 +31,6 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
           if (activeStep !== steps.length) history.push('/');
         }
       };
-
       generateToken();
     }
   }, [cart]);
@@ -56,16 +55,6 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
       <CircularProgress />
     </div>
   ));
-
-  // if (error) {
-  //   Confirmation = () => (
-  //     <>
-  //       <Typography variant="h5">Error: {error}</Typography>
-  //       <br />
-  //       <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
-  //     </>
-  //   );
-  // };
 
   const Form = () => (activeStep === 0
     ? <AddressForm checkoutToken={checkoutToken} next={next} nextStep={nextStep} />

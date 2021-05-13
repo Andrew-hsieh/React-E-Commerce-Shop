@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { Typography, Button, Divider } from '@material-ui/core';
-import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
+import { Elements, CardElement, ElementsConsumer  } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import Review from './Review';
@@ -13,7 +13,6 @@ const PaymentForm = ({ checkoutToken, shippingData, backStep, handleCaptureCheck
     event.preventDefault();
 
     if(!stripe || !elements) return;
-    
     const cardElement = elements.getElement(CardElement);
     const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
 

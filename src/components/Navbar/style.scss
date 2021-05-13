@@ -8,8 +8,9 @@
   position: relative;
   box-sizing: border-box;
   width: 90px;
-  // padding-left: 5px;
-  padding: 15px 0 15px 5px;
+  padding: 15px 5px;
+  display: flex;
+  justify-content: center;
   & a {
     text-decoration: none;
   }
@@ -38,5 +39,10 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 372px) {
+  .title_shop {
+    display: none;
+  }
+  .store_title {
+  }
 }

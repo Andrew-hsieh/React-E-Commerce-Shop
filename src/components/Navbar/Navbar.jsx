@@ -19,11 +19,13 @@ const Navbar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-        <Typography component={Link} to="/" variant="h6" className='title' color="inherit">
-          <img src={logo} alt="Commerce.js" height="60px" className={classes.image} />
+          <Link to='/'>
+        <img src={logo} alt="Commerce.js" height="60px" className={classes.image} component={Link} to="/" />
+          </Link>
+        <Typography component={Link} to="/" variant="h6" className='title title_shop' color="inherit">
           {'Andrew\'s Shop'}
         </Typography>
-        <Toolbar />
+        <div className={classes.grow} />
         <div className='title store_title'>
         <Typography component={Link} to="/products" variant="h6" color="inherit">
           Store
@@ -40,7 +42,6 @@ const Navbar = ({ totalItems }) => {
           </Typography>
           </div>
         </div>
-        <div className={classes.grow} />
         {location.pathname !== '/cart' && (
         <div className={classes.button}>
           <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
