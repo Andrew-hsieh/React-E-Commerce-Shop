@@ -17,7 +17,6 @@
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    transition: 0.8s ease;
   }
   &:hover .secondImage {
     opacity: 1;
@@ -30,6 +29,9 @@
   position: relative;
   display: flex;
   justify-content: center;
+}
+.firstImage {
+  transition: 0.5s ease;
 }
 .secondImage {
   position: absolute;

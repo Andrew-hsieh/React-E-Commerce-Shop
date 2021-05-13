@@ -50,16 +50,8 @@
     background: #3545a0;
   }
 }
-// prompt
-.swal2-container {
-  z-index: 10000;
-}
-.swal2-content {
-  padding: 0 12px;
-}
-.swal2-popup {
-  height: 80vh;
-  width: 80vw;
+.sizeNotice {
+  color: #d43f21;
 }
 
 @media screen and (max-width: 350px) {

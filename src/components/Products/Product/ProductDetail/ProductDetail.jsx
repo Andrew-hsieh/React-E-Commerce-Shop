@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
 import { Modal, Backdrop, Fade, Button, makeStyles, Box } from '@material-ui/core';
-import Swal from 'sweetalert2';
 import Close from '@material-ui/icons/Close';
 import ImageSlider from '../../../ImageSlider/ImageSlider';
 import './style.css';
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     position: 'relative',
     width: '80vw',
-    height: '80vh',
+    height: '90vh',
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-around',
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionsModal({ open, handleClose, productData, onAddToCart }) {
   const [sizeId, setSizeId] = React.useState(null);
+  const [sizeNotice, setSizeNotice] = React.useState(false);
   const classes = useStyles();
 
   // toggle selected button class name for change color
@@ -42,15 +42,17 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
   const handleLeave = () => {
     setSizeId(null);
     handleClose()
+    setSizeNotice(false);
   } 
   const handleAddToCart = () => {
     if(!sizeId) {
-      Swal.fire('Oops...', 'You forgot to choose the size for your new shoes', 'error');
+      setSizeNotice(true);
       return;
     };
     onAddToCart(productData.id, 1, sizeId);
     setSizeId(null);
     handleClose();
+    setSizeNotice(false);
   }
 
   if(!productData.media) {handleClose(); return null};
@@ -83,6 +85,9 @@ export default function TransitionsModal({ open, handleClose, productData, onAdd
               <ImageSlider assets={productData.assets} />
             </div>
             <Box mb={{'xs':2,'md':4}} className="btnContainer">
+              {sizeNotice&&<div className='sizeNotice'>
+              Please select a size.
+              </div>}
               <Box className="btnGroup">
                 { productData.variant_groups.length !== 0 &&(productData.variant_groups[0].options).map((option)=>(
                   <button  
